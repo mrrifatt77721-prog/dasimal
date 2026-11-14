@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#06112b">
+<title>DESI MAL - Video Hub</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script id="monetag-sdk" src="https://libtl.com/sdk.js" data-zone="12261981" data-sdk="show_12261981"></script>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#06112b;color:#fff;font-family:Arial,sans-serif;min-height:var(--desimal-viewport-height,100vh)}
+.app{width:100%;max-width:620px;min-height:var(--desimal-viewport-height,100vh);margin:0 auto;padding:14px}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:16px}.logo{width:47px;height:47px;border-radius:13px;background:linear-gradient(135deg,#00d9ed,#1263ff,#a000ff);display:grid;place-items:center;font-size:25px}.brand{flex:1}.brand b{font-size:23px}.brand small{display:block;color:#9db4e9;letter-spacing:4px;font-size:10px}.online{color:#16e6a0;border:1px solid #16e6a0;border-radius:20px;padding:8px;font-size:12px}
+.hero{padding:15px 17px;border-radius:17px;background:linear-gradient(115deg,#08bfe9,#0647cf,#8311e7);position:relative;overflow:hidden}.hero:after{content:"🎬 🍿";position:absolute;right:7px;top:43px;font-size:39px}.hero b{font-size:15px;font-style:italic}.hero h1{font-size:35px;color:#ffe331;margin:2px 0}.hero h3{font-size:16px;margin:7px 0}.hero p{font-size:12px;max-width:72%;line-height:1.45}
+.heading{display:flex;align-items:center;gap:9px;margin:16px 2px 9px}.heading h2{font-size:19px;flex:1;margin:0}.tag{font-size:9px;border:1px solid #ffca16;color:#ffe044;border-radius:20px;padding:6px}
+.feature,.video-item,.playerbox{background:#111e3c;border:1px solid #2b3b63;border-radius:16px;padding:10px}.feature{display:flex;align-items:center;gap:12px;cursor:pointer}.thumb{width:39%;height:105px;border-radius:12px;background:linear-gradient(135deg,#0645a8,#7c22e9);display:grid;place-items:center;font-size:35px;background-size:cover;background-position:center}.feature-info{flex:1;min-width:0}.feature-info b{font-size:17px}.feature-info small{display:block;color:#aebde0;margin-top:6px}.arrow{font-size:28px;background:#29395e;border-radius:50%;padding:5px 12px}
+.video-list{display:grid;gap:9px;margin-top:10px}.video-item{display:flex;align-items:center;gap:10px}.vthumb{width:80px;height:58px;border-radius:9px;background:linear-gradient(135deg,#0757b8,#8c19de);background-size:cover;background-position:center;display:grid;place-items:center;flex-shrink:0}.vinfo{flex:1;min-width:0;overflow-wrap:anywhere}.vinfo small{display:block;color:#aebde0;margin-top:5px}
+button{cursor:pointer}.btn{width:100%;border:0;border-radius:30px;padding:14px;color:#fff;font-size:17px;font-weight:bold;background:linear-gradient(100deg,#00aef4,#096cff,#9716f4)}.btn:disabled{opacity:.55;cursor:wait}.smallbtn{border:1px solid #526996;background:#1a2c52;color:white;border-radius:9px;padding:9px 11px}
+.screen{display:none}.screen.active{display:block}.verify-card{margin:0;text-align:center;padding:20px 17px;border:1px solid #344b7b;background:#14254a;border-radius:22px;animation:cardEnter .65s ease both}
+.verify-logo{width:86px;height:86px;margin:0 auto 15px;border-radius:25px;background:linear-gradient(135deg,#00d9ed,#1263ff 55%,#a000ff);display:grid;place-items:center;box-shadow:0 0 30px #087cff55}.verify-logo-inner{width:70px;height:70px;border-radius:20px;background:#071532;display:grid;place-items:center}.verify-logo-inner span{font-size:38px;color:white;margin-left:5px}
+.verify-card h2{font-size:23px;margin:13px 0 8px}.verify-card p,.success p{color:#aebde0;font-size:13px;line-height:1.5;margin:9px 0}.steps{display:flex;gap:7px;margin:14px 0}.step{height:7px;border-radius:9px;background:#2a3b63;flex:1}.step.done{background:linear-gradient(90deg,#08d8ef,#8e24ff)}
+.success{display:none;text-align:center;padding:20px 15px;animation:successEnter .7s ease both}.check{margin:auto;width:78px;height:78px;border-radius:50%;display:grid;place-items:center;font-size:43px;background:#0c513f;border:2px solid #1ce6a2;color:#1cf0ad}.success h2{color:#20e8a4;font-size:27px;margin:17px 0 12px}
+.playerbox{margin-top:12px}.playerbox video{width:100%;max-height:430px;background:#000;border-radius:10px}.playerbox p{font-size:12px;color:#aebde0}
+.admin{margin-top:22px;border:1px solid #435a8a;border-radius:16px;padding:13px;background:#101d39}.admin input:not([type=file]),.admin textarea{width:100%;padding:11px;margin:5px 0 10px;border-radius:9px;border:1px solid #3b4e78;background:#07132c;color:white}.admin input[type=file]{width:100%;padding:10px;margin:5px 0;color:#dce9ff;background:#07132c;border:1px dashed #526996;border-radius:9px}.admin label{display:block;font-size:13px;margin:12px 0 5px;color:#dce9ff}.preview{width:100%;max-height:220px;object-fit:contain;background:#050b19;border-radius:10px;margin-top:8px}.note{font-size:11px;color:#aebde0;line-height:1.5}.footer{text-align:center;color:#91a4d2;font-size:10px;letter-spacing:2px;margin:25px 0}.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#1a2d51;border:1px solid #536b9c;padding:11px 15px;border-radius:12px;font-size:12px;display:none;z-index:10;max-width:90%;text-align:center}
+#verifyScreen.active{display:flex;flex-direction:column;justify-content:center;align-items:stretch;min-height:max(430px,calc(var(--desimal-viewport-height,100vh) - 115px));padding:12px 0 18px}#verifyCard{width:100%;min-height:390px;display:flex;flex-direction:column;justify-content:center}#verifiedBox{width:100%;min-height:390px;margin:0;padding:26px 15px;display:none;flex-direction:column;justify-content:center;align-items:center}
+@keyframes cardEnter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}@keyframes successEnter{from{opacity:0;transform:translateY(22px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.btn,.smallbtn{position:relative;overflow:hidden;background-image:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.27) 48%,transparent 62%),linear-gradient(100deg,#00aef4,#096cff,#9716f4);background-size:220% 100%,100% 100%;background-position:-130% 0,0 0;animation:buttonShine 5s ease-in-out infinite}.smallbtn{background-image:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.22) 48%,transparent 62%),linear-gradient(100deg,#1a2c52,#29395e)}@keyframes buttonShine{0%,15%{background-position:-130% 0,0 0}65%,100%{background-position:130% 0,0 0}}
+@media(max-height:700px){#verifyScreen.active{min-height:max(430px,calc(var(--desimal-viewport-height,100vh) - 105px));padding:8px 0 12px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top" id="top"><div class="logo">▶</div><div class="brand"><b>DESI MAL</b><small>VIDEO HUB</small></div><div class="online">● ONLINE</div></header>
+<section class="screen active" id="verifyScreen">
+<div class="verify-card" id="verifyCard"><div class="verify-logo"><div class="verify-logo-inner"><span>▶</span></div></div><h2>Quick Verification</h2><p>অ্যাপে প্রবেশের আগে ৩টি বিজ্ঞাপন ধাপ সম্পন্ন করে ভেরিফাই করুন।</p><div class="steps"><span class="step" id="s1"></span><span class="step" id="s2"></span><span class="step" id="s3"></span></div><p>Ad verification: <b id="verifyCount">0 / 3</b></p><button class="btn" id="verifyBtn" type="button">▶ Start verification 1</button><p id="verifyHint">বিজ্ঞাপন সম্পন্ন হলে পরের ধাপ চালু হবে।</p></div>
+<div class="success" id="verifiedBox"><div class="check">✓</div><h2>VERIFIED</h2><p>তোমার ভেরিফিকেশন সফল হয়েছে। এখন অ্যাপে প্রবেশ করতে পারো।</p><button class="btn" id="goAppBtn" type="button">GO TO APP →</button></div>
+</section>
+<section class="screen" id="appScreen">
+<div class="hero"><b>YOUR ENTERTAINMENT</b><h1>SPACE</h1><hr><h3>Watch. Discover. Enjoy.</h3><p>A simple video hub for gaming, tutorials and everyday entertainment.</p></div>
+<div class="heading"><span>⭐</span><h2 id="listHeading">Featured video</h2><span class="tag">🏆 EDITOR'S PICK</span></div>
+<div id="catalogView"><div class="feature" id="featuredCard"><div class="thumb" id="featuredThumb">▶</div><div class="feature-info"><b id="featuredTitle">Gameplay Highlights</b><small id="featuredDesc">Your next video is waiting.</small></div><div class="arrow">›</div></div><div class="heading"><span>🎞️</span><h2>All videos</h2></div><div class="video-list" id="videoList"></div></div>
+<div id="singleView" style="display:none"><div class="playerbox"><video id="mainPlayer" controls playsinline></video><h3 id="singleTitle"></h3><p id="singleDesc"></p></div><button class="smallbtn" id="backBtn" type="button">← Back to all videos</button></div>
+<div class="footer">DESI MAL VIDEO HUB · 2026</div>
+<div class="admin" id="adminPanel" style="display:none"><h3>⚙ Admin Panel</h3><input id="adminPassword" type="password" placeholder="Admin password"><button class="smallbtn" id="unlockBtn" type="button">Unlock panel</button>
+<div id="adminForm" style="display:none"><input id="vTitle" placeholder="Video title"><textarea id="vDesc" rows="2" placeholder="Video description"></textarea>
+<label>🖼️ Gallery থেকে Thumbnail নির্বাচন</label><input id="vThumbFile" type="file" accept="image/*"><img id="thumbPreview" class="preview" hidden>
+<label>🎬 Gallery থেকে Video নির্বাচন</label><input id="vVideoFile" type="file" accept="video/*"><video id="videoPreview" class="preview" controls playsinline hidden></video>
+<p class="note">চাইলে Public URL দিয়েও ভিডিও যোগ করতে পারো। Gallery ফাইলের ক্ষেত্রে URL লাগবে না।</p><input id="vUrl" type="url" placeholder="Public video URL (optional)"><input id="vThumb" type="url" placeholder="Thumbnail image URL (optional)"><button class="smallbtn" id="addVideoBtn" type="button">Add video</button><div id="addedLinks"></div>
+<p class="note">প্রতিটি Public URL ভিডিওর আলাদা Share Link কপি করে Telegram-এ দিতে পারবে।</p></div></div>
+</section>
+<div class="toast" id="toast"></div>
+</div>
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const ZONE="12261981",ADMIN_PASSWORD="658763";
+let verifyDone=0,monetagPromise=null,headerTap=0,db=null,thumbFile=null,videoFile=null,previewThumbUrl=null,previewVideoUrl=null,currentPlayerUrl=null;
+let videos=[];try{videos=JSON.parse(localStorage.getItem("desimal_videos_v1")||"[]")}catch(e){videos=[]}
+const tg=window.Telegram?.WebApp;try{tg?.ready();tg?.expand()}catch(e){}
+function toast(message){const el=$("toast");el.textContent=message;el.style.display="block";clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.style.display="none",2600)}
+function safeUrl(value){try{const u=new URL(value,location.href);return ["http:","https:","blob:"].includes(u.protocol)?u.href:""}catch(e){return ""}}
+function sdkReady(){return typeof window["show_"+ZONE]==="function"}
+function loadMonetag(){
+ if(sdkReady())return Promise.resolve();
+ if(monetagPromise)return monetagPromise;
+ monetagPromise=new Promise((resolve,reject)=>{
+  let attempts=0;const check=()=>{if(sdkReady())return resolve();if(++attempts>30)return reject(new Error("SDK load timeout"));setTimeout(check,300)};
+  const existing=document.getElementById("monetag-sdk");
+  if(!existing){const s=document.createElement("script");s.id="monetag-sdk";s.src="https://libtl.com/sdk.js";s.dataset.zone=ZONE;s.dataset.sdk="show_"+ZONE;s.async=true;s.onerror=()=>reject(new Error("SDK load failed"));document.head.appendChild(s)}
+  check();
+ });
+ return monetagPromise.catch(e=>{monetagPromise=null;throw e}).finally(()=>{if(!sdkReady())monetagPromise=null});
+}
+function updateVerify(){
+ $("verifyCount").textContent=verifyDone+" / 3";
+ for(let i=1;i<=3;i++)$("s"+i).classList.toggle("done",i<=verifyDone);
+ if(verifyDone>=3){$("verifyCard").style.display="none";$("verifiedBox").style.display="flex"}
+}
+async function runVerifyAd(){
+ if(verifyDone>=3)return;
+ const b=$("verifyBtn"),hint=$("verifyHint");b.disabled=true;b.textContent="Loading Monetag…";hint.textContent="বিজ্ঞাপন লোড হচ্ছে, একটু অপেক্ষা করো।";
+ try{
+  await loadMonetag();
+  const showAd=window["show_"+ZONE];if(typeof showAd!=="function")throw new Error("SDK function missing");
+  hint.textContent="বিজ্ঞাপন চালু হয়েছে। শেষ হওয়া পর্যন্ত অপেক্ষা করো।";
+  const ymid="desimal_"+Date.now()+"_"+(verifyDone+1);
+  const result=await showAd({type:"end",ymid,requestVar:"verification_step_"+(verifyDone+1),timeout:20});
+  if(result && result.reward_event_type && !["valued","non_valued"].includes(result.reward_event_type))throw new Error("Unrecognized ad response");
+  verifyDone++;updateVerify();
+  hint.textContent=verifyDone<3?"এই ধাপ সম্পন্ন। পরের বিজ্ঞাপনটি চালু করো।":"ভেরিফিকেশন সম্পন্ন!";
+ }catch(e){
+  console.error("Monetag verification:",e);
+  const msg=String(e?.message||e);
+  hint.textContent=msg==="Empty feed"?"এখন কোনো বিজ্ঞাপন পাওয়া যাচ্ছে না। কিছুক্ষণ পরে আবার চেষ্টা করো।":msg==="Failed to verify the ad show"?"Monetag বিজ্ঞাপনটি নিশ্চিত করতে পারেনি। আবার চেষ্টা করো।":"বিজ্ঞাপন চালু হয়নি। HTTPS hosting, Zone ID ও ইন্টারনেট সংযোগ পরীক্ষা করো।";
+  toast("বিজ্ঞাপন সম্পন্ন হয়নি। আবার চেষ্টা করো।");
+ }finally{b.disabled=false;if(verifyDone<3)b.textContent="▶ Start verification "+(verifyDone+1)}
+}
+function enterApp(){$("verifyScreen").classList.remove("active");$("appScreen").classList.add("active");const p=new URLSearchParams(location.search),id=p.get("video");if(id){const v=videos.find(x=>x.id===id)||{id,title:p.get("title")||"Shared video",desc:p.get("desc")||"",url:p.get("src")||"",thumb:p.get("thumb")||""};$("catalogView").style.display="none";showSingle(v)}else renderCatalog()}
+function openDB(){return new Promise((resolve,reject)=>{if(!("indexedDB"in window))return reject(new Error("IndexedDB unsupported"));const req=indexedDB.open("DESIMAL_MEDIA_DB",1);req.onupgradeneeded=e=>{const d=e.target.result;if(!d.objectStoreNames.contains("media"))d.createObjectStore("media")};req.onsuccess=e=>{db=e.target.result;resolve(db)};req.onerror=()=>reject(req.error)})}
+function putMedia(key,blob){return new Promise((resolve,reject)=>{const tx=db.transaction("media","readwrite");tx.objectStore("media").put(blob,key);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)})}
+function getMedia(key){return new Promise((resolve,reject)=>{const tx=db.transaction("media","readonly"),req=tx.objectStore("media").get(key);req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)})}
+function releasePlayerUrl(){if(currentPlayerUrl){URL.revokeObjectURL(currentPlayerUrl);currentPlayerUrl=null}}
+function releasePreviewUrls(){if(previewThumbUrl){URL.revokeObjectURL(previewThumbUrl);previewThumbUrl=null}if(previewVideoUrl){URL.revokeObjectURL(previewVideoUrl);previewVideoUrl=null}}
+$("vThumbFile").addEventListener("change",function(){thumbFile=this.files?.[0]||null;if(previewThumbUrl)URL.revokeObjectURL(previewThumbUrl);previewThumbUrl=null;if(!thumbFile){$("thumbPreview").hidden=true;return}if(!thumbFile.type.startsWith("image/")){toast("একটি ছবি নির্বাচন করো।");this.value="";thumbFile=null;return}previewThumbUrl=URL.createObjectURL(thumbFile);$("thumbPreview").src=previewThumbUrl;$("thumbPreview").hidden=false});
+$("vVideoFile").addEventListener("change",function(){videoFile=this.files?.[0]||null;if(previewVideoUrl)URL.revokeObjectURL(previewVideoUrl);previewVideoUrl=null;if(!videoFile){$("videoPreview").hidden=true;return}if(!videoFile.type.startsWith("video/")){toast("একটি ভিডিও নির্বাচন করো।");this.value="";videoFile=null;return}previewVideoUrl=URL.createObjectURL(videoFile);$("videoPreview").src=previewVideoUrl;$("videoPreview").hidden=false});
+async function renderCatalog(){
+ $("catalogView").style.display="block";$("singleView").style.display="none";let v=videos[0],image="";
+ if(v){$("featuredTitle").textContent=v.title;$("featuredDesc").textContent=v.desc||"Tap to watch";if(v.localThumb&&db){try{const blob=await getMedia(v.id+"_thumb");if(blob)image=URL.createObjectURL(blob)}catch(e){}}else image=safeUrl(v.thumb);$("featuredThumb").style.backgroundImage=image?`url("${image}")`:"";$("featuredThumb").textContent=image?"":"▶"}
+ else{$("featuredTitle").textContent="Gameplay Highlights";$("featuredDesc").textContent="Your next video is waiting.";$("featuredThumb").style.backgroundImage="";$("featuredThumb").textContent="▶"}
+ $("videoList").innerHTML="";
+ for(const itemData of videos){const item=document.createElement("div");item.className="video-item";const th=document.createElement("div");th.className="vthumb";th.textContent="▶";let imageUrl="";if(itemData.localThumb&&db){try{const blob=await getMedia(itemData.id+"_thumb");if(blob)imageUrl=URL.createObjectURL(blob)}catch(e){}}else imageUrl=safeUrl(itemData.thumb);if(imageUrl){th.style.backgroundImage=`url("${imageUrl}")`;th.textContent=""}
+ const info=document.createElement("div");info.className="vinfo";const title=document.createElement("b");title.textContent=itemData.title;const desc=document.createElement("small");desc.textContent=itemData.desc||"Video";info.append(title,desc);const btn=document.createElement("button");btn.className="smallbtn";btn.textContent="Open";btn.onclick=()=>showSingle(itemData);item.append(th,info,btn);$("videoList").append(item)}
+}
+async function showSingle(v){
+ let url=safeUrl(v.url);if(v.localVideo){if(!db){try{await openDB()}catch(e){toast("Local storage চালু হয়নি।");return}}try{const blob=await getMedia(v.id+"_video");if(!blob){toast("ভিডিও ফাইল পাওয়া যায়নি।");return}releasePlayerUrl();currentPlayerUrl=URL.createObjectURL(blob);url=currentPlayerUrl}catch(e){toast("ভিডিও খোলা যায়নি।");return}}
+ if(!url){toast("এই ভিডিওর Public URL নেই।");return}
+ $("catalogView").style.display="none";$("singleView").style.display="block";$("listHeading").textContent="Video";$("singleTitle").textContent=v.title;$("singleDesc").textContent=v.desc||"";$("mainPlayer").pause();$("mainPlayer").src=url;$("mainPlayer").load();
+}
+function openFeatured(){if(videos.length)showSingle(videos[0]);else toast("Admin এখনো কোনো ভিডিও যোগ করেনি।")}
+function backToCatalog(){$("mainPlayer").pause();$("mainPlayer").removeAttribute("src");$("mainPlayer").load();releasePlayerUrl();history.replaceState({},"",location.pathname);$("listHeading").textContent="Featured video";renderCatalog()}
+function makeShareLink(v){if(!v.url)return "";const u=new URL(location.href);u.search="";u.searchParams.set("video",v.id);u.searchParams.set("title",v.title);u.searchParams.set("desc",v.desc||"");u.searchParams.set("src",v.url);if(v.thumb)u.searchParams.set("thumb",v.thumb);return u.href}
+async function copyText(text){try{await navigator.clipboard.writeText(text);toast("লিংক কপি হয়েছে।")}catch(e){const t=document.createElement("textarea");t.value=text;document.body.appendChild(t);t.select();try{document.execCommand("copy");toast("লিংক কপি হয়েছে।")}catch(err){toast("কপি করা যায়নি।")}t.remove()}}
+function unlockAdmin(){if($("adminPassword").value===ADMIN_PASSWORD){$("adminForm").style.display="block";$("adminPassword").value="";toast("Admin panel unlocked")}else toast("ভুল Admin password")}
+async function addVideo(){
+ const title=$("vTitle").value.trim(),desc=$("vDesc").value.trim(),url=safeUrl($("vUrl").value.trim()),thumb=safeUrl($("vThumb").value.trim());
+ if(!title){toast("ভিডিওর Title লিখো।");return}if(!url&&!videoFile){toast("ভিডিও URL দাও অথবা Gallery থেকে ভিডিও নির্বাচন করো।");return}
+ const id="v_"+Date.now().toString(36)+"_"+Math.random().toString(36).slice(2,7),v={id,title,desc,url,thumb,localVideo:!!videoFile,localThumb:!!thumbFile};
+ try{if(videoFile||thumbFile){await openDB();if(videoFile)await putMedia(id+"_video",videoFile);if(thumbFile)await putMedia(id+"_thumb",thumbFile)}
+ videos.unshift(v);localStorage.setItem("desimal_videos_v1",JSON.stringify(videos));$("vTitle").value="";$("vDesc").value="";$("vUrl").value="";$("vThumb").value="";$("vThumbFile").value="";$("vVideoFile").value="";thumbFile=null;videoFile=null;releasePreviewUrls();$("thumbPrevie
